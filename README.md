@@ -588,7 +588,7 @@ TIME_BIN_CONFIG = {
 
 **Rationale:**
 - **Multi-Scale Analysis:** Climate impacts manifest at different time scales - sudden weather events (days), seasonal patterns (months), and long-term trends (years)
-- **Optimal Granularity Discovery:** By creating multiple bin sizes, we let the correlation analysis identify which temporal resolution best captures the climate-futures relationship
+- **Optimal Time Period Discovery:** By creating multiple bin sizes, we let the correlation analysis identify which time period size best captures the climate-futures relationship
 - **Noise Reduction:** Coarser bins (tertile, quartile) smooth out daily fluctuations in location counts while preserving meaningful trends
 - **Fine-Grained Patterns:** Finer bins (decile, vigintile) capture shorter-term market reactions to climate events
 - **Why Quartile and Sextile Performed Best:** The top features use quartile and sextile bins, suggesting futures markets respond to climate patterns aggregated over 2 to 4 quarter periods
@@ -730,7 +730,7 @@ The following feature types were created during exploration. While they did not 
 
 | Feature Type | What It Captures | Rationale |
 |--------------|------------------|-----------|
-| **Date Decile Groupby** | `climate_risk_cnt_locations_*` aggregated by decile time bins | Finer temporal granularity (10 bins) to capture shorter-term patterns |
+| **Date Decile Groupby** | `climate_risk_cnt_locations_*` aggregated by decile time bins | Finer time resolution (10 bins) to capture shorter-term patterns |
 | **Low-Risk Level Features** | Aggregations of `*_risk_low` columns | Count locations with normal conditions (within acceptable parameters for corn growth) |
 | **High-Risk Level Features** | Aggregations of `*_risk_high` columns | Capture anomalous extreme events |
 | **Tredecile/Vigintile Features** | Very fine time bins (13 to 20 bins) | Capture week-to-week or month-to-month patterns |
@@ -752,7 +752,7 @@ The following feature types were created during exploration. While they did not 
 
 1. **Medium risk level is optimal:** Features using `_risk_medium` consistently outperformed `_risk_high` (too rare) and `_risk_low` (no signal)
 
-2. **Quartile and sextile time bins are optimal:** 4 to 6 bins over the data range captured the right temporal granularity.
+2. **Quartile and sextile time bins are optimal:** 4 to 6 bins over the data range captured the right level of detail.
 
 3. **Compound features outperform single risks:** Combinations like `drought × excess_precip` capture market-relevant stress patterns better than individual risks
 
